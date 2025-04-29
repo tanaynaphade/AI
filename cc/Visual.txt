@@ -1,0 +1,19 @@
+<apex:page controller="Test">
+    <apex:form>
+        <apex:pageBlock title="Create New Account">
+            <apex:pageMessages />
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!newAccount.Name}" required="true" />
+                <apex:inputField value="{!newAccount.Phone}" />
+                <apex:selectList value="{!newAccount.Industry}" size="1" label="Industry">
+                    <apex:selectOptions value="{!industryOptions}" />
+                </apex:selectList>
+                <apex:inputField value="{!newAccount.Website}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons>
+                <apex:commandButton action="{!saveAccount}" value="Save" />
+                <apex:commandButton action="{!cancel}" value="Cancel" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

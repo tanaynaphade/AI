@@ -1,0 +1,33 @@
+public class Test {
+    public Account newAccount { get; set; }
+    public List<SelectOption> industryOptions { get; set; }
+
+    public Test() {
+        newAccount = new Account();
+        industryOptions = new List<SelectOption>{
+            new SelectOption('', '--None--'),
+            new SelectOption('IT', 'IT'),
+            new SelectOption('MECH', 'Mechanical'),
+            new SelectOption('CHEM', 'Chemical'),
+            new SelectOption('PHARMA', 'Pharmaceutical')
+        };
+    }
+
+    public PageReference saveAccount() {
+        if (String.isBlank(newAccount.Name)) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Account Name is required.'));
+            return null;
+        }
+        try {
+            insert newAccount;
+            return new PageReference('/' + newAccount.Id).setRedirect(true);
+        } catch (DmlException e) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Error creating account: ' + e.getMessage()));
+            return null;
+        }
+    }
+
+    public PageReference cancel() {
+        return new PageReference('/lightning/page/home');
+    }
+}
