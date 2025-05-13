@@ -48,3 +48,4 @@ path, cost = a_star_search(graph, heuristics, 'a', 'z')
 
 print(f"Path found: {' -> '.join(path)}")
 print(f"Total cost: {cost}")
+print("v2")
