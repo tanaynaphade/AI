@@ -4,7 +4,7 @@ pipeline {
         stage('Run 2_a_star_graph.py on Git Changes') {
             steps {
                 echo "Changes detected in the Git repository."
-                sh 'python 2_a_star_graph.py'
+                sh 'python3 2_a_star_graph.py'
             }
         }
     }
