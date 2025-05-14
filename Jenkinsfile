@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage('Run 2_a_star_graph.py on Git Changes') {
+            when {
+                changeset "**"
+            }
+            steps {
+                echo "Changes detected in the Git repository."
+                sh 'python 2_a_star_graph.py'
+            }
+        }
+    }
+}
